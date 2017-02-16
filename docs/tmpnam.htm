@@ -1,0 +1,985 @@
+<!DOCTYPE html> 
+<html dir="ltr" lang="zh-CN"> 
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="static/favicon.ico" />
+<title>tmpnam 函数说明 - Standard C语言标准函数库速查 (Cheat Sheet) </title> 
+<meta name="keywords" content="tmpnam函数详解、C语言、ansic"/>
+<meta name="description" content="函数名: tmpnam 功能: 创建一个唯一的文件名 用法: char *tmpnam(char *sptr); 程序例: #include &lt;stdio.h&gt; int main(void) {  char name[13];  tmpnam(name);  printf("Temporary name: %s\n", n"/>
+<meta name="viewport" content="width=device-width" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=9, IE=8, chrome=1">
+<link rel="stylesheet" type="text/css" href="static/layout.css">
+</head> 
+<body class="core"> 
+<div id="header"> 
+<h1>Standard C 语言标准函数库速查 (Cheat Sheet)</h1> 
+</div> 
+<div id="center"> 
+
+
+<div id="ansi-demo">
+  <h2><!--<a href="../">返回主页</a> - -->tmpnam 函数说明</h2>  
+  <dl class="api ansi-seed"><dt>
+
+  函数名: <strong>tmpnam</strong> <br/>功&nbsp;&nbsp;能: 创建一个唯一的文件名 <br/>用&nbsp;&nbsp;法: char *<strong>tmpnam</strong>(char *sptr); <br/>程序例: <br/><br/>#include &lt;stdio.h&gt; <br/><br/>int main(void) <br/>{ <br/>&nbsp;&nbsp; char name[13]; <br/><br/>&nbsp;&nbsp; <strong>tmpnam</strong>(name); <br/>&nbsp;&nbsp; printf("Temporary name: %s\n", name); <br/>&nbsp;&nbsp; return 0; <br/>} <br/><br/><br/><br/>
+<div id="search">
+<form action="/standard-c/" method="post">
+     <fieldset> <label> 
+C语言函数搜索框：<input type="text" id="function" name="function"></label>   
+   </fieldset>
+	</form> 
+
+
+</div>
+<br/>
+
+   </dt></dl>
+</div>
+
+<div id="content"> 
+<div class="layout"> 
+
+    <h2 class="ansi-seed">C语言标准头</h2> 
+    <dl id="ansi-OOP" class="api ansi-seed"> 
+
+<dt><strong>&lt;assert.h&gt; 断言</strong> </dt>
+<dd>  定义 assert 调试宏。 </dd>
+
+
+<dt><strong>&lt;ctype.h&gt; 字符类测试</strong>  </dt>
+<dd> 包含有关字符分类及转换的名类信息(如 isalpha和toascii等)</dd>
+
+
+<dt><strong>&lt;errno.h&gt; （部分）库函数抛出的错误代码</strong> </dt> 
+<dd> 定义错误代码的助记符。 </dd>
+
+
+
+<dt><strong>&lt;float.h&gt; 浮点数运算</strong>  <dd>
+</dt>  包含有关浮点运算的一些参数和函数。 </dd>
+
+
+<dt><strong>&lt;limits.h&gt; 检测整型数据类型值范围</strong> </dt> 
+<dd> 专门用于检测整型数据数据类型的表达值范围。</dd>
+
+
+<dt><strong>&lt;locale.h&gt; 本土化 </strong></dt>
+<dd> 语言支持本地化设定，如本地格式时间和货币符号. </dd> 
+
+<dt><strong>&lt;math.h&gt; 数学函数 </strong> </dt>
+<dd>  说明数学运算函数，还定了 HUGE VAL 宏， 说明了matherr和matherr子程序用到的特殊结构。</dd>
+
+
+<dt><strong>&lt;setjmp.h&gt;  “非局部跳转” </strong> </dt>
+<dd> 定义longjmp和setjmp函数用到的jmp buf类型， 说明这两个函数。</dd> 
+
+<dt><strong>&lt;signal.h&gt;  信号</strong> </dt>
+<dd> 定义SIG[ZZ(Z] [ZZ)]IGN和SIG[ZZ(Z] [ZZ)]DFL常量，说明rajse和signal两个函数。 </dd> 
+
+
+<dt><strong>&lt;stdarg.h&gt; 可变参数列表 </strong> </dt>
+<dd> 定义读函数参数表的宏。(如vprintf,vscarf函数)。 </dd>
+
+
+
+<dt><strong>&lt;stddef.h&gt; 一些常数，类型和变量 </strong> </dt> 
+<dd> 定义一些公共数据类型和宏。 </dd>
+
+
+<dt><strong>&lt;stdio.h&gt; 输入和输出  </strong>  </dt>
+<dd> 定义Kernighan和Ritchie在Unix System V 中定义的标准和扩展的类型和宏。<br/>
+还定义标准I/O 预定义流：stdin,stdout和stderr，说明 I/O流子程序。 
+</dd>
+<dt><strong>&lt;stdlib.h&gt;  实用功能</strong>      </dt> 
+<dd> 说明一些常用的子程序：转换子程序、搜索/ 排序子程序等。</dd>
+
+<dt><strong>&lt;string.h&gt;  字符串函数</strong>       </dt>
+<dd>  说明一些串操作和内存操作函数。 </dd> 
+
+<dt><strong>&lt;time.h&gt; 时间和日期函数 </strong></dt>
+<dd>  定义时间转换子程序asctime、localtime和gmtime的结构，ctime、 difftime、 gmtime、 localtime和stime用到的类型，并提供这些函数的原型。 </dd>
+</dl>
+
+  <div class="split"></div> 
+ 
+    <h2 class="ansi-seed"> &lt;assert.h&gt; 断言  </h2> 
+    <dl id="ansi-module" class="api ansi-seed"> 
+<dt>
+头文件&lt;assert.h&gt;唯一的目的是提供宏assert的定义。如果断言非真（expression==0），则程序会在标准错误流输出提示信息，并使程序异常中止调用abort() 。<br/>定义：<strong>void assert (int expression);</strong>
+
+<pre>
+//#define NDEBUG
+#include &lt;assert.h&gt;	
+int main(int argc, char* argv[]){
+	int a = 12;
+	int b = 24;
+	assert( a > b );
+	printf("a is larger than b!");
+	return 0;
+}
+</pre>
+
+上面的程序会发现程序中止，printf并未执行，且有这样的输出：
+<strong>main: Assertion `a > b' failed.</strong> 原因就是因为a其实小于b，导致断言失败，assert 输出错误信息，并调用abort()中止了程序执行。
+
+</dt>
+
+
+    </dl> 
+
+    <h2 class="ansi-seed">&lt;ctype.h&gt; 字符测试</h2> 
+    <dl id="ansi-function" class="api ansi-seed"> 
+    
+
+
+
+		<dt>
+	&lt;ctype.h&gt; 主要提供两类重要的函数：字符测试函数和字符大小转化函数。提供的函数中都以int类型为参数，并返回一个int类型的值。实参类型应该隐式转换或者显示转换为int类型。
+		</dt> 
+		<dt></dt>
+<dt><a href="isalnum.htm"><strong>int isalnum(int c);</strong></a> 判断是否是字母或数字。</dt> 
+<dt><a href="isalpha.htm"><strong>int isalpha(int c);</strong></a>  判断是否是字母。</dt> 
+<dt title="判断是否是控制字符。(\x00~\x1f和\x7f)"><strong><a href="iscntrl.htm">int iscntrl(int c); </strong></a> 判断是否是控制字符。</dt> 
+<dt><strong><a href="isdigit.htm">int isdigit(int c); </strong></a>判断是否是数字。</dt> 
+<dt title="判断是否是可显示字符。(除空格外)"><a href="isgraph.htm"><strong>int isgraph(int c); </strong></a> 判断是否是可显示字符。</dt> 
+<dt><a href="islower.htm"><strong>int islower(int c); </strong></a> 判断是否是小写字母。</dt> 
+<dt><a href="isupper.htm"><strong>int isupper(int c); </strong></a> 判断是否是大写字母。</dt> 
+<dt title="判断是否是可显示字符。(包括空格)"><strong><a href="isprint.htm">int isprint(int c); </strong></a> 判断是否是可显示字符。</dt> 
+<dt title="判断是否是标点字符。(可显示字符中除去空格、字母及数字的其它字符)"><a href="ispunct.htm"><strong>int ispunct(int c); </strong></a>判断是否是标点字符。</dt> 
+<dt title="判断是否是空白字符，包括换行(\n)、换页(\f)、回车(\r)、水平制表符(\t)以及垂直制表符(\v)等。"><a href="isspace.htm"><strong>int isspace(int c); </strong></a>判断是否是空白字符</dt> 
+<dt><strong><a href="isxdigit.htm">int isxdigit(int c); </strong></a>判断字符是否为16进制。</dt> 
+<dt><strong><a href="tolower.htm">int tolower(int c);</strong> </a>转换为小写字母。</dt> 
+<dt><strong><a href="toupper.htm">int toupper(int c); </strong> </a>转换为大写字母。 </dt> 
+  <dt></dt>
+    <dt></dt>
+    </dl> 
+
+ 
+    <h2 class="ansi-core">&lt;errno.h&gt; 错误代码</h2> 
+    <dl id="ansi-ua" class="api ansi-core"> 
+        <dt>
+error.h 是 C语言 C标准函式库里的头文件，定义了通过错误码来返回错误信息的宏：<br/><br/>
+errno 宏定义为一个int型态的左值, 包含任何函数使用errno功能所产生的上一个错误码。<br/><br/>
+一些表示错误码，定义为整数值的宏：<br/>
+EDOM 源自于函数的参数超出范围,例如 sqrt(-1)<br/>
+ERANGE 源自于函数的结果超出范围,例如s trtol("0xfffffffff",NULL,0)<br/>
+EILSEQ 源自于不合​​法的字符顺序,例如 wcstombs(str, L"\xffff", 2)
+		</dt> 
+  
+    </dl> 
+	
+  
+	   <h2 class="ansi-seed">&lt;float.h&gt; 浮点数运算</h2> 
+    <dl id="ansi-member" class="api ansi-seed"> 
+<dt> 
+		float头文件定义了浮点型数值的最大最小限
+浮点型数值以下面的方式定义：符号-value E 指数
+符号是正负，value是数字的值
+<br/>
+下面的值是用#define定义的，这些值是详细的实现，但是可能没有比这里给出的更详细，<br/>
+在所有实例里FLT指的是float，DBL是double，LDBL指的是long double
+</dt> 
+        <dt><strong>FLT_ROUNDS</strong><br/>定义浮点型数值四舍五入的方式，-1是不确定，0是向0，1是向最近，2是向正无穷大，3是负无穷大</dt> 
+
+		 <dt><strong>FLT_RADIX 2</strong><br/>定义指数的基本表示（比如base-2是二进制，base-10是十进制表示法，16是十六进制）</dt>
+  <dt></dt>
+		  <dt><strong>FLT_MANT_DIG，DBL_MANT_DIG，LDBL_MANT_DIG</strong><br/>定义数值里数字的个数</dt>
+		   <dt></dt>
+		 <dt><strong>FLT_DIG 6，DBL_DIG 10，LDBL_DIG 10</strong><br/>在四舍五入之后能不更改表示的最大小数位</dt>
+		   <dt></dt>
+		  <dt><strong>FLT_MIN_EXP，DBL_MIN_EXP，LDBL_MIN_EXP</strong><br/>FLT_RADIX 的指数的最小负整数值</dt>
+		  <dt></dt>
+		  <dt><strong>FLT_MIN_10_EXP -37，DBL_MIN_10_EXP -37，LDBL_MIN_10_EXP -37</strong><br/>10进制表示法的的指数的最小负整数值</dt>
+		    <dt></dt>
+
+
+  <dt><strong>FLT_MAX_EXP ,DBL_MAX_EXP ,LDBL_MAX_EXP</strong><br/>FLT_RADIX 的指数的最大整数值</dt>
+		    <dt></dt>
+  <dt><strong>FLT_MAX_10_EXP +37 ,DBL_MAX_10_EXP ,LDBL_MAX_10_EXP +37 +37</strong><br/>10进制表示法的的指数的最大整数值</dt>
+		    <dt></dt>
+
+		  <dt><strong>FLT_MAX 1E+37，DBL_MAX 1E+37，LDBL_MAX 1E+37</strong><br/>浮点型的最大限</dt>
+		    <dt></dt>
+		  <dt><strong>FLT_EPSILON 1E-5，DBL_EPSILON 1E-9，LDBL_EPSILON 1E-9</strong><br/>能表示的最小有符号数</dt>
+		  <dt></dt>
+
+    </dl> 
+
+
+
+  <h2 class="ansi-seed">&lt;limits.h&gt; 取值范围</h2> 
+    <dl id="ansi-lang" class="api ansi-seed"> 
+
+
+  <dt><strong>CHAR_BIT  </strong> 一个ASCII字符长度 </dt> 
+        <dt><strong>SCHAR_MIN </strong> 字符型最小值</dt> 
+		<dt><strong>SCHAR_MAX</strong> 字符型最大值</dt> 
+		<dt><strong>UCHAR_MAX </strong> 无符号字符型最大值 </dt> 
+<dt></dt> 
+        <dt><strong>
+		CHAR_MIN<br/> 
+		CHAR_MAX
+</strong> <br/>
+
+char字符的最大最小值，如果char字符正被表示有符号整数。它们的值就跟有符号整数一样。
+否则char字符的最小值就是0，最大值就是无符号char字符的最大值。
+<dt></dt> 
+</dt> 
+		<dt><strong>MB_LEN_MAX </strong>一个字符所占最大字节数 </dt> 
+		<dt><strong>SHRT_MIN  </strong> 最小短整型</dt> 
+        <dt><strong>SHRT_MAX </strong> 最大短整形</dt> 
+		<dt><strong>USHRT_MAX</strong> 最大无符号短整型</dt> 
+        <dt><strong>INT_MIN </strong> 最小整型</dt> 
+		<dt><strong>INT_MAX </strong> 最大整形</dt> 
+		<dt><strong>UINT_MAX </strong> 最大无符号整型</dt> 
+        <dt><strong>LONG_MIN </strong>最小长整型 </dt> 
+		<dt><strong>LONG_MAX </strong>最大长整型 </dt> 
+		<dt><strong>ULONG_MAX </strong>无符号长整型 </dt>
+     
+    </dl> 
+
+
+
+
+<h2 class="ansi-core">&lt;locale.h&gt; 本土化 </h2> 
+    <dl id="ansi-event" class="api ansi-core"> 
+        <dt> 国家、文化和语言规则集称为区域设置，<strong>&lt;locale.h&gt; </strong>头文件中定义了区域设置相关的函数。setlocale函数用于设置或返回当前的区域特性，localeconv用于返回当前区域中的数字和货币信息（保存在struct lconv结构实例中）。setlocale的第一个实参指定要改变的区域行为类别，预定义的setlocale类别有： </dt> 
+    <dt></dt>
+       
+                <dt> <strong>LC_ALL</strong><br/> 全部本地化信息 </dt> 
+                <dt><strong> LC_COLLATE</strong><br/>影响strcoll和strxfrm</dt> 
+                <dt><strong>LC_CTYPE</strong><br/>影响字符处理函数和多行字符处理函数</dt> 
+                <dt><strong> LC_MONETARY</strong><br/>影响localeconv返回的货币格式化信息 </dt> 
+				<dt><strong>LC_NUMERIC</strong><br/>影响格式化输入输出字符中的小数点符号</dt>
+				<dt><strong>LC_TIME</strong><br/>影响strftime函数</dt>
+				<dt>  <div class="split"></div> </dt>
+      <dt>
+	  
+	
+	<strong>&lt;locale.h&gt; </strong> 头文件中提供了2个函数
+	  <br/>
+<strong>setlocale() </strong> 设置或恢复本地化信息  <br/>
+<strong>localeconv()</strong> 返回当前地域设置的信息
+
+
+ <dt>
+<strong>setlocale(constant,location)</strong> 用法 <br/>如果这个函数成功执行，将返回当前的场景属性；如果执行失败，将返回False。</dt>
+<dt></dt>
+<dt><strong>constant</strong> 参数 (必要参数。指定设置的场景信息)</dt>
+<dt><strong>LC_ALL</strong> – 所有下属的常量</dt>
+<dt><strong>LC_COLLATE</strong> – 排列顺序</dt>
+<dt><strong>LC_CTYPE</strong> – 字符分类和转换（例如：将所有的字符转换成小写或大写形式）</dt>
+<dt><strong>LC_MESSAGES</strong> – 系统信息格式</dt>
+<dt><strong>LC_MONETARY</strong> – 货币 / 通货格式</dt>
+<dt><strong>LC_NUMERIC</strong> – 数值格式</dt>
+<dt><strong>LC_TIME</strong> – 日期和时间格式</dt>
+<dt></dt>
+<dt> <strong>location</strong>  (必要参数)</dt>
+<dt>必要参数。指定需要进行场景信息设置的国家或区域。它可以由一个字符串或一个数组组成。如果本地区域是一个数组，那么setlocale()函数将尝试每 个数组元素直到它从中获取有效的语言和区域代码信息为止。如果一个区域处于不同操作系统中的不同名称下，那么这个参数将非常有用。</dt>
+	  
+	  </dt>
+
+
+<dt><strong>struct lconv *localeconv(void);</strong> 用法 </dt>
+<dt>
+localeconv 返回lconv结构指针 
+
+lconv结构介绍: 保存格式化的数值信息，保存数值包括货币和非货币的格式化信息，localeconv返回指向该对象的指针，以下为结构中的成员及信息：
+
+</dt>
+
+
+<dt><strong>char *decimal_point; </strong>  数字的小数点号    </dt>
+<dt><strong>char *thousands_sep; </strong> 数字的千分组分隔符    </dt>
+<dt> 
+每个元素为相应组中的数字位数，索引越高的元素越靠左边。一个值为CHAR_MAX的元素表示没有更多的分组了。一个值为0的元素表示前面的元素能用在靠左边的所有分组中 </dt>
+<dt><strong>char *grouping; </strong> 数字分组分隔符  </dt>
+<dt><strong>char *int_curr_symbol; </strong>前面的三个字符ISO 4217中规定的货币符号，第四个字符是分隔符，第五个字符是'\0' */</dt>
+<dt><strong>char *currency_symbol;</strong> 本地货币符号</dt>
+<dt><strong>char *mon_decimal_point;</strong>  货币的小数点号 </dt>
+<dt><strong>char *mon_thousands_sep; </strong>千分组分隔符 </dt>
+<dt><strong>char *mon_grouping;</strong> 类似于grouping元素</dt>
+<dt><strong>char *positive_sign;</strong> 正币值的符号</dt>
+<dt><strong>char *negative_sign;</strong> 负币值的符号</dt>
+<dt><strong>char int_frac_digits; </strong>国际币值的小数部分 </dt>
+<dt><strong>char frac_digits;</strong> 本地币值的小数部分</dt>
+
+<dt><strong>char p_cs_precedes; </strong>如果currency_symbol放在正币值之前则为1，否则为0</dt>
+<dt><strong>char p_sep_by_space;  </strong>当且仅当currency_symbol与正币值之间用空格分开时为1  </dt>
+<dt><strong>char n_cs_precedes; </strong>< 如果currency_symbol放在负币值之前则为1，否则为0/dt>
+<dt><strong>char n_sep_by_space;</strong>  当且仅当currency_symbol与负币值之间用空格分开时为1 </dt>
+
+
+
+<dt><strong>char p_sign_posn;</strong> 格式化选项 </dt>
+<dt>
+0 - 在数量和货币符号周围的圆括号
+<br/>1 - 数量和货币符号之前的 + 号
+<br/>2 - 数量和货币符号之后的 + 号
+<br/>3 - 货币符号之前的 + 号
+<br/>4 - 货币符号之后的 + 号
+</dt>
+
+
+<dt><strong>char n_sign_posn</strong> 格式化选项</dt>
+
+<dt>
+0 - 在数量和货币符号周围的圆括号
+<br/>1 - 数量和货币符号之前的 - 号
+<br/>2 - 数量和货币符号之后的 - 号
+<br/>3 - 货币符号之前的 - 号
+<br/>4 - 货币符号之后的 - 号
+</dt>
+
+
+   
+<dt>
+   最后提示：可以使用setlocale(LC_ALL,NULL)函数将场景信息设置为系统默认值。</dt>
+    </dl> 
+
+
+
+
+
+
+</div> 
+
+
+
+<div class="layout"> 
+
+
+  
+
+
+ 
+
+  
+
+
+
+
+
+     <h2 class="ansi-core">&lt;math.h&gt; 数学函数</h2> 
+    <dl id="ansi-other" class="api ansi-core"> 
+        <dt> &lt;math.h&gt;  是C语言中的数学函数库</dt> 
+		<dt></dt><dt></dt>
+		<dt>三角函数</dt>
+		<dt> <a href="sin.htm"> <strong> double sin(double x); </strong></a>  正弦</dt>
+		<dt><a href="cos.htm">  <strong>double cos(double x); </strong> </a>  余弦</dt>
+		<dt>  <a href="tan.htm">  <strong> double tan(double x); </strong> </a>  正切</dt>
+		<dt>  *cot三角函数，可以使用tan(PI/2-x)来实现。</dt>
+<dt></dt><dt></dt>
+		<dt><br/>反三角函数</dt>
+
+<dt><a href="asin.htm"><strong> double asin(double x);</strong></a>结果介于[-PI/2, PI/2]  <br/> </dt>
+<dt><a href="acos.htm"><strong>double acos(double x);</strong></a> 结果介于[0, PI]  <br/>  </dt>
+<dt><a href="atan.htm"><strong>double atan(double x);</strong></a>  <br/> 反正切(主值), 结果介于[-PI/2, PI/2] <br/></dt>
+<dt><a href="atan2.htm"><strong>double atan2(double y,double);</strong></a>    <br/> 反正切(整圆值), 结果介于[-PI, PI]   </dt>
+
+<dt></dt><dt></dt>
+		<dt> <br/>双曲三角函数</dt><dt></dt>
+
+<dt><a href="sinh.htm"><strong>   double sinh(double x); </strong></a> 计算双曲正弦  </dt>
+<dt><a href="cosh.htm"><strong>  double cosh(double x); </strong></a>  计算双曲余弦</dt>
+<dt><a href="tanh.htm"><strong>   double tanh(double x); </strong></a>计算双曲正切 </dt>
+
+<dt></dt><dt></dt>
+
+		<dt> <br/>指数与对数</dt>
+
+
+<dt><a href="exp.htm"><strong> double exp(double x);</strong></a> 求取自然数e的幂  </dt>
+<dt><a href="sqrt.htm"><strong>double sqrt(double x); </strong></a> 开平方  </dt>
+<dt><a href="log.htm"><strong> double log(double x);  </strong></a>  以e为底的对数 </dt>
+<dt><a href="log10.htm"><strong>double log10(double x); </strong></a>  以10为底的对数 </dt>
+<dt><a href="pow.htm"><strong>double pow(double x, double y);</strong></a>  <br/> 计算以x为底数的y次幂   <br/> </dt>
+<dt><a href="powf.htm"><strong>float powf(float x, float y); </strong></a> <br/> 与pow一致，输入与输出皆为浮点数  </dt>
+
+<dt></dt><dt></dt>
+		<dt> <br/>取整</dt>
+<dt><a href="ceil.htm"><strong> double ceil(double); </strong></a>  取上整 </dt>
+<dt><a href="floor.htm"><strong> double floor(double); </strong></a> 取下整 </dt>
+<dt></dt><dt></dt>
+
+		<dt></dt><dt></dt>
+		<dt> <br/> 标准化浮点数</dt>
+<dt><a href="frexp.htm"><strong> double frexp(double f, int *p);  </strong></a>  <br/> 标准化浮点数, f = x * 2^p, 已知f求x, p ( x介于[0.5, 1] )  <br/></dt>
+<dt><a href="ldexp.htm"><strong> double ldexp(double x, int p);  </strong></a>    <br/>与frexp相反, 已知x, p求f </dt>
+<dt></dt><dt></dt>
+
+
+		<dt></dt><dt></dt>
+		<dt> <br/> 取整与取余</dt>
+<dt><a href="modf.htm"><strong> double modf(double, double*);  </strong></a>  <br/>将参数的整数部分通过指针回传, 返回小数部分 <br/> <br/> </dt>
+<dt><a href="fmod.htm"><strong> double fmod(double, double);   </strong></a>  <br/>返回两参数相除的余数 </dt>
+<dt></dt><dt></dt>
+       
+       
+    </dl> 
+
+
+
+
+	
+  <div class="split"></div> 
+    <h2 class="ansi-core">&lt;setjmp.h&gt;  “非局部跳转”  </h2> 
+    <dl id="ansi-jsco" class="api ansi-core"> 
+	<dt>
+在该头文件中定义了一种特别的函数调用和函数返回顺序的方式。这种方式不同于以往的函数调用和返回顺序，
+<br/>它允许程序流程立即从一个深层嵌套的函数中返回。<br/>
+ &lt;setjmp.h&gt; 中定义了两个宏：<br/>
+ <br/>
+ <strong>int setjmp(jmp_buf env);  /*设置调转点*/</strong>
+ <br/>
+<strong>longjmp(jmp_buf jmpb, int retval);   /*跳转*/</strong>
+ <br/>
+   <br/>
+
+   宏setjmp的功能是将当前程序的状态保存在结构env ，为调用宏longjmp设置一个跳转点。setjmp将当前信息保存在env中供longjmp使用。其中env是jmp_buf结构类型的。
+
+<br/><strong>Demo :</strong><br/><br/>
+<pre>
+#include  &lt;stdio.h&gt;
+#include  &lt;setjmp.h&gt;
+static jmp_buf buf;
+void second(void) {
+    printf("second\n");        
+	// 打印
+    longjmp(buf,1);            
+	// 跳回setjmp的调用处
+	- 使得setjmp返回值为1
+}
+ void first(void) {
+    second();
+    printf("first\n");          
+	// 不可能执行到此行
+}
+ int main() {   
+    if ( ! setjmp(buf) ) {
+        first();               
+	// 进入此行前，setjmp返回0
+    } else {                  
+	// 当longjmp跳转回，
+	setjmp返回1，因此进入此行
+        printf("main\n");  
+		// 打印
+    }
+     return 0;
+}
+</pre>
+   直接调用setjmp时，返回值为0，这一般用于初始化（设置跳转点时）。以后再调用longjmp宏时用env变量进行跳转。程序会自动跳转到setjmp宏的返回语句处，此时setjmp的返回值为非0，由longjmp的第二个参数指定。
+   <br/> 
+   一般地，宏setjmp和longjmp是成对使用的，这样程序流程可以从一个深层嵌套的函数中返回。
+   	</dt>
+    </dl> 
+ 
+
+
+ 
+
+    <h2 class="ansi-core">&lt;signal.h&gt;  信号</h2> 
+    <dl id="ansi-dom" class="api ansi-core"> 
+        <dt> 在signal.h头文件中，提供了一些函数用以处理执行过程中所产生的信号。 </dt>
+
+		  <dt>宏：  </dt>
+
+  <dt><strong>SIG_DFL</strong>   </dt>
+  <dt><strong>SIG_ERR</strong>   </dt>
+  <dt><strong>SIG_IGN </strong>  </dt>
+  <dt><strong>SIGABRT</strong>   </dt>
+  <dt><strong>SIGFPE</strong>   </dt>
+  <dt><strong>SIGILL </strong>  </dt>
+  <dt><strong>SIGINT </strong>  </dt>
+  <dt><strong>SIGSEGV </strong>  </dt>
+  <dt><strong>SIGTERM </strong>  </dt>
+   
+  <dt></dt> <dt></dt>
+  <dt>函数： </dt>
+	 <dt><strong>signal(); </strong> 
+	<dt><strong>raise();  </strong> 
+
+
+  <dt></dt> <dt></dt>
+ <dt>变量：</dt>
+  <dt></dt>
+  <dt><strong>typedef sig_atomic_t </strong>  </dt>
+
+
+  <dt><strong> sig_atomic_t </strong>  类型是int类型，用于接收signal函数的返回值。  </dt>
+
+  <dt>以SIG_开头的宏用于定义信号处理函数 </dt>
+  <dt> </dt>
+  <dt><strong>SIG_DFL</strong>   默认信号处理函数。 </dt>
+  <dt><strong>SIG_ERR</strong>	表示一个错误信号，当signal函数调用失败时的返回值。  </dt>
+  <dt><strong>SIG_IGN</strong>	信号处理函数，表示忽略该信号。  </dt>
+  <dt> </dt>
+  <dt>SIG开头的宏是用来在下列情况下，用来表示一个信号代码： </dt>
+  <dt> </dt>
+  <dt><strong>SIGABRT</strong>	异常终止（abort函数产生）。  </dt>
+  <dt><strong>SIGFPE</strong>	浮点错误（0作为除数产生的错误，非法的操作）。 </dt> 
+  <dt><strong>SIGILL</strong>	非法操作（指令）。  </dt>
+  <dt><strong>SIGINT</strong>	交互式操作产生的信号（如CTRL - C）。  </dt>
+  <dt><strong>SIGSEGV</strong>	无效访问存储（片段的非法访问，内存非法访问）。  </dt>
+  <dt><strong>SIGTERM</strong>	终止请求。  </dt>
+
+  <dt> </dt>
+  <dt> </dt>  <dt> </dt>
+<dt><strong> signal  </strong>  函数</dt>
+  <dt> </dt>
+
+  <dt> <strong> void(*signal(int sig,void (*func)(int)))(int); </strong> </dt> 
+  <dt> </dt>  <dt>
+上面的函数定义中，sig 表示一个信号代码（相当于暗号类别），即是上面所定义的SIG开头的宏。当有信号出现（即当收到暗号）的时候，参数func所定义的函数就会被调用。如果func等于SIG_DFL，则表示调用默认的处理函数。如果等于SIG_IGN，则表示这个信号被忽略（不做处理）。如果func是用户自定义的函数，则会先调用默认的处理函数，再调用用户自己定义的函数。 自定义函数，有一个参数，参数类型为int，用来表示信号代码（暗号类别）。同时，函数必须以return、abort、exit 或 longjump等语句结束。当自定义函数运行结束，程序会继续从被终止的地方继续运行。（除非信号是SIGFPE导致结果未定义，则可能无法继续运行） </dt>
+<dt>
+如果调用signal函数成功，则会返回一个指针，该指针指向为所指定的信号类别的所预先定义的信号处理器。
+<br/>
+如果调用失败，则会返回一个SIG_ERR，同时errno的值也会被相应的改变。
+
+</dt>
+  <dt> </dt>  <dt> </dt>
+<dt><strong>raise 函数</strong></dt>
+
+<dt><strong>int raise(int sig); </strong></dt>
+
+<dt>发出一个信号sig。信号参数为SIG开头的宏。</dt>
+
+<dt>如果调用成功，返回0。否则返回一个非零值。 </dt>
+
+    </dl> 
+
+
+
+
+
+  <div class="split"></div> 
+
+
+
+
+
+
+
+
+	 <h2 class="ansi-core">&lt;stdarg.h&gt;  可变参数</h2> 
+    <dl id="ansi-stdarg" class="api ansi-core"> 
+         <dt>&lt;stdarg.h&gt; 头文件定义了一些宏，当函数参数未知时去获取函数的参数</dt> 
+	<dt> 变量：<strong>typedef va_list </strong></dt>
+	<dt>  <br/>宏：<br/>
+<ul>
+<li><strong>va_start()</strong></li>
+<li><strong>va_arg()</strong></li>
+<li><strong>va_end()</strong></li>
+</ul>
+</dt>
+
+<dt>
+<br/>
+<strong>变量和定义</strong><br/>
+va_list类型通过stdarg宏定义来访问一个函数的参数表，参数列表的末尾会用省略号省略
+<br/><br/>
+
+声明：<strong>void va_start(va_list ap, last_arg);</strong><br/>
+用va_arg和va_end宏初始化参数ap，last_arg是传给函数的固定参数的最后一个，省略号之前的那个参数
+注意va_start必须在使用va_arg和va_end之前调用<br/>
+<br/>
+声明：<strong>type va_arg(va_list ap, type);</strong><br/>
+用type类型扩展到参数表的下个参数<br/>
+注意ap必须用va_start初始化，如果没有下一个参数，结果会是undefined<br/>
+<br/>
+声明：<strong>void va_end(va_list ap)</strong>;
+允许一个有参数表（使用va_start宏）的函数返回，如果返回之前没有调用va_end,结果会是undefined。参数变量列表可能不再使用（在没调用va_start的情况下调用va_end）
+</dt>
+    </dl> 
+ 
+  
+  
+
+  <div class="split"></div> 
+
+   <h2 class="ansi-core">&lt;stddef.h&gt; 一些常数，类型和变量</h2> 
+    <dl id="ansi-anim" class="api ansi-core"> 
+        <dt>&lt;stddef.h&gt; 头文件定义了一些标准定义，许多定义也会出现在其他的头文件里</dt> 
+		<dt>
+
+宏命令：NULL 和 offsetof()
+<br/><br/>
+变量：<br/>
+<strong>typedef ptrdiff_t</strong><br/>
+<strong>typedef size_t</strong><br/>
+<strong>typedef wchar_t</strong><br/>
+<br/>
+变量和定义：<br/>
+<strong>ptrdiff_t</strong>是两个指针相减的结果<br/>
+<strong>size_t</strong>是sizeof一个关键词得到的无符号整数值<br/>
+<strong>wchar_t</strong>是一个宽字符常量的大小，是整数类型<br/>
+<strong>NULL</strong>是空指针的常量值<br/><br/>
+<strong>offsetof(type, member-designator);</strong>这个宏返回一个结构体成员相对于结构体起始地址的偏移量（字节为单位），type是结构体的名字，member-designator是结构体成员的名字。
+	</dt>
+        
+    </dl> 
+
+
+</div> 
+
+<div class="layout"> 
+
+
+
+
+
+
+
+
+
+    <h2 class="ansi-core">&lt;stdio.h&gt; 输入和输出 </h2> 
+    <dl id="ansi-ajax" class="api ansi-core"> 
+        <dt>&lt;stdio.h&gt;头文件定义了用于输入和输出的函数、类型和宏。最重要的类型是用于声明文件指针的FILE。另外两个常用的类型是 size_t和fpos_t，size_t是由运算符sizeof产生的无符号整类型；fpos_t类型定义能够唯一说明文件中的每个位置的对象。由头部 定义的最有用的宏是EOF，其值代表文件的结尾。</dt> <dt>
+<br/>变量：
+<br/>
+<strong>typedef size_t</strong><br/>
+<strong>typedef FILE</strong><br/>
+<strong>typedef fpos_t</strong><br/>
+<br/>常量 ：    
+<br/>
+<strong>NULL</strong> 空值<br/>
+<strong>_IOFBF</strong> 表示完全缓冲 <br/>
+<strong>_IOLBF</strong> 表示线缓冲 <br/>
+<strong>_IONBF</strong> 表示无缓存<br/>
+<strong>BUFSIZ</strong> setbuf函数所使用的缓冲区的大小<br/>
+<strong>EOF</strong> EOF是负整数表示END OF FILE<br/>
+<strong>FOPEN_MAX</strong> (20)同时打开的文件的最大数量<br/>
+<strong>FILENAME_MAX </strong>文件名的最大长度<br/>
+<strong>L_tmpnam</strong>整数，最大长度的临时文件名<br/>
+<strong>SEEK_CUR</strong>取得目前文件位置<br/>
+<strong>SEEK_END</strong>将读写位置移到文件尾时<br/>
+<strong>SEEK_SET</strong>将读写位置移到文件开头<br/>
+<strong>TMP_MAX</strong>tmpnam最多次数<br/>
+<strong>stderr</strong>标准错误流，默认为屏幕,  可输出到文件。<br/>
+<strong>stdin</strong>标准输入流，默认为键盘<br/>
+<strong>stdout</strong>标准输出流，默认为屏幕
+<br/>
+<br/>所有函数(点击可查看介绍和DEMO) ：    
+<br/><br/>
+</ul>
+
+
+ <li><a href="clearerr.htm"><strong>clearerr(); </strong></a>  复位错误标志    </li>
+ <li><a href="fclose.htm"><strong>fclose();</strong></a>   关闭一个流。  </li>
+ <li><a href="feof.htm"><strong>feof();</strong></a>  检测文件结束符   </li>
+ <li><a href="ferror.htm"><strong>ferror(); </strong></a>  检查流是否有错误   </li>
+ <li><a href="fflush.htm"><strong>fflush();</strong></a>更新缓冲区     </li>
+ <li><a href="fgetpos.htm"><strong>fgetpos(); </strong></a>  移动文件流的读写位置   </li>
+ <li><a href="fopen.htm"><strong>fopen();</strong></a>打开文件     </li>
+ <li><a href="fread.htm"><strong>fread();</strong></a>   从文件流读取数据   </li>
+ <li><a href="freopen.htm"><strong>freopen();</strong></a>    打开文件 </li>
+ <li><a href="fseek.htm"><strong>fseek();</strong></a>   移动文件流的读写位置  </li>
+ <li><a href="fsetpos.htm"><strong>fsetpos();</strong></a>定位流上的文件指针     </li>
+ <li><a href="ftell.htm"><strong>ftell();</strong></a>  取得文件流的读取位置   </li>
+ <li><a href="fwrite.htm"><strong>fwrite();</strong></a>   将数据写至文件流  </li>
+ <li><a href="remove.htm"><strong>remove();</strong></a>   删除文件  </li>
+ <li><a href="rename.htm"><strong>rename();</strong></a>  更改文件名称或位置   </li>
+ <li><a href="rewind.htm"><strong>rewind();</strong></a>   重设读取目录的位置为开头位置  </li>
+ <li><a href="setbuf.htm"><strong>setbuf();</strong></a>  把缓冲区与流相联   </li>
+ <li><a href="setvbuf.htm"><strong>setvbuf();</strong></a> 把缓冲区与流相关    </li>
+ <li><a href="tmpfile.htm"><strong>tmpfile();</strong></a> 以wb+形式创建一个临时二进制文件    </li>
+ <li><a href="tmpnam.htm"><strong>tmpnam();</strong></a>  　产生一个唯一的文件名   </li>
+ <li><a href="fprintf.htm"><strong>fprintf();</strong></a>  格式化输出数据至文件   </li>
+ <li><a href="fscanf.htm"><strong>fscanf();</strong></a> 格式化字符串输入    </li>
+ <li><a href="printf.htm"><strong>printf();</strong></a>  格式化输出数据   </li>
+ <li><a href="scanf.htm"><strong>scanf();</strong></a> 格式输入函数    </li>
+ <li><a href="sprintf.htm"><strong>sprintf();</strong></a>  格式化字符串复制   </li>
+ <li><a href="sscanf.htm"><strong>sscanf();</strong></a>  格式化字符串输入   </li>
+ <li><a href="vfprintf.htm"><strong>vfprintf();</strong></a>  格式化输出数据至文件   </li>
+ <li><a href="vprintf.htm"><strong>vprintf();</strong></a> 格式化输出数据    </li>
+ <li><a href="vsprintf.htm"><strong>vsprintf();</strong></a> 格式化字符串复制    </li>
+ <li><a href="fgetc.htm"><strong>fgetc();</strong></a>  由文件中读取一个字符   </li>
+ <li><a href="fgets.htm"><strong>fgets();</strong></a>  文件中读取一字符串   </li>
+ <li><a href="fputc.htm"><strong>fputc();</strong></a>  将一指定字符写入文件流中   </li>
+ <li><a href="fputs.htm"><strong>fputs();</strong></a>  将一指定的字符串写入文件内   </li>
+ <li><a href="getc.htm"><strong>getc();</strong></a>    由文件中读取一个字符 </li>
+ <li><a href="getchar.htm"><strong>getchar();</strong></a>   由标准输入设备内读进一字符  </li>
+ <li><a href="gets.htm"><strong>gets();</strong></a>  由标准输入设备内读进一字符串   </li>
+ <li><a href="putc.htm"><strong>putc();</strong></a> 将一指定字符写入文件中    </li>
+ <li><a href="putchar.htm"><strong>putchar();</strong></a> 将指定的字符写到标准输出设备    </li>
+ <li><a href="puts.htm"><strong>puts();</strong></a> 送一字符串到流stdout中    </li>
+ <li><a href="ungetc.htm "><strong>ungetc(); </strong></a> 　将指定字符写回文件流中    </li>
+ <li><a href="perror.htm "><strong>perror(); </strong></a>  打印出错误原因信息字符串   </li>
+<ul>
+</dt> 
+    </dl> 
+ 
+
+
+
+  <div class="split"></div> 
+
+
+ 
+    <h2 class="ansi-core">&lt;stdlib.h&gt;  实用功能</h2> 
+    <dl id="ansi-datalazyload" class="api ansi-core"> 
+         <dt>&lt;stdlib.h&gt; 头文件里包含了C语言的中最常用的系统函数</dt> 
+	
+	
+	
+
+	<dt>  <br/>宏：<br/>
+<ul>
+<li><strong>NULL </strong>  空</li>
+<li><strong>EXIT_FAILURE </strong>失败状态码</li>
+<li><strong>EXIT_SUCCESS </strong>成功状态码</li>
+<li><strong>RAND_MAX </strong>rand的最大返回值</li>
+<li><strong>MB_CUR_MAX </strong>多字节字符中的最大字节数</li>
+
+</ul>
+	<dt></dt><dt></dt>
+	<dt> 变量：<br/>
+	
+	<uL>
+<li><strong>typedef size_t</strong>是unsigned integer类型  </li>
+<li><strong>typedef wchar_t</strong> 一个宽字符的大小</li>
+<li><strong>struct div_t</strong>  是结构体类型 作为div函数的返回类型</li>
+<li><strong>struct ldiv_t</strong>是结构体类型 作为ldiv函数的返回类型
+</li>	
+	</ul>
+
+	</dt>
+<dt></dt><dt></dt>
+<dt></dt><dt></dt>
+<dt> 函数：<br/>
+
+<uL>
+
+ <li><strong>字符串函数</strong>  </li>
+ <li><a href="atof.htm"><strong>atof();</strong></a>  将字符串转换成浮点型数   </li>
+ <li><a href="atoi.htm"><strong>atoi();</strong></a>   将字符串转换成整型数  </li>
+ <li><a href="atol.htm"><strong>atol();</strong></a> 将字符串转换成长整型数    </li>
+ <li><a href="strtod.htm"><strong>strtod();</strong></a> 将字符串转换成浮点数    </li>
+ <li><a href="strtol.htm"><strong>strtol();</strong></a>   将字符串转换成长整型数  </li>
+ <li><a href="strtoul.htm"><strong>strtoul();</strong></a>  将字符串转换成无符号长整型数   </li>
+ <li><a href="/standard-c/function/"><strong></strong></a>     </li>
+ <br/> <li><strong>内存控制函数</strong>   </li>
+ <li><a href="calloc.htm"><strong>calloc();</strong></a>  配置内存空间   </li>
+ <li><a href="free.htm"><strong>free();</strong></a>  释放原先配置的内存   </li>
+ <li><a href="malloc.htm"><strong>malloc();</strong></a>  配置内存空间   </li>
+ <li><a href="realloc.htm"><strong>realloc();</strong></a>  重新分配主存   </li>
+ <br/>
+ <li><strong>环境函数</strong>     </li>
+ <li><a href="abort.htm"><strong>abort();</strong></a>  异常终止一个进程   </li>
+ <li><a href="atexit.htm"><strong>atexit();</strong></a>设置程序正常结束前调用的函数    </li>
+ <li><a href="exit.htm"><strong>exit();</strong></a>  正常结束进程   </li>
+ <li><a href="getenv.htm"><strong>getenv();</strong></a> 取得环境变量内容   </li>
+ <li><a href="system.htm"><strong>system();</strong></a>  执行shell 命令   </li>
+ <li><a href="/standard-c/function/"><strong></strong></a>     </li>
+  <br/><li><strong>搜索和排序函数</strong>   </li>
+ <li><a href="bsearch.htm"><strong>bsearch();</strong></a> 二元搜索  </li>
+ <li><a href="qsort.htm"><strong>qsort();</strong></a> 利用快速排序法排列数组    </li>
+
+  <br/><li><strong>数学函数</strong>     </li>
+ <li><a href="abs.htm"><strong>abs();</strong></a>   计算整型数的绝对值  </li>
+ <li><a href="div.htm"><strong>div();</strong></a> 将两个整数相除, 返回商和余数    </li>
+ <li><a href="labs.htm"><strong>labs();</strong></a> 取长整型绝对值    </li>
+ <li><a href="ldiv.htm"><strong>ldiv();</strong></a>两个长整型数相除, 返回商和余数     </li>
+ <li><a href="rand.htm"><strong>rand();</strong></a>  随机数发生器   </li>
+ <li><a href="srand.htm"><strong>srand();</strong></a> 设置随机数种子   </li>
+
+  <br/><li><strong>多字节函数</strong>     </li>
+ <li><a href="mblen.htm"><strong>mblen();</strong></a> 根据locale的设置确定字符的字节数     </li>
+ <li><a href="mbstowcs.htm"><strong>mbstowcs();</strong></a> 把多字节字符串转换为宽字符串     </li>
+ <li><a href="mbtowc.htm"><strong>mbtowc();</strong></a>   	把多字节字符转换为宽字符  </li>
+ <li><a href="wcstombs.htm"><strong>wcstombs();</strong></a>  把宽字符串转换为多字节字符串     </li>
+ <li><a href="wctomb.htm"><strong>wctomb();</strong></a>    把宽字符转换为多字节字符  </li>
+
+</ul>
+</dt>
+
+
+</dl>
+    <div class="split"></div>  
+    <h2 class="ansi-core">&lt;string.h&gt;  字符串函数</h2> 
+    <dl id="ansi-uibase" class="api ansi-core"> 
+         <dt>&lt;stdlib.h&gt; 头文件里包含了C语言的最常用的字符串操作函数</dt> 
+	
+	
+	
+
+	<dt>  <br/>宏：<br/>
+<ul>
+<li><strong>NULL </strong>  空</li>
+</ul>
+	<dt></dt><dt></dt>
+	<dt> 变量：<br/>
+	
+	<uL>
+<li><strong>typedef size_t</strong>  </li>
+
+</li>	
+	</ul>
+
+	</dt>
+<dt></dt><dt></dt>
+<dt></dt><dt></dt>
+<dt> 函数：<br/>
+
+<uL>
+
+
+ <li><a href="memchr.htm"><strong>memchr();</strong></a>在某一内存范围中查找一特定字符     </li>
+ <li><a href="memcmp.htm"><strong>memcmp();</strong></a>   比较内存内容  </li>
+ <li><a href="memcpy.htm"><strong>memcpy();</strong></a> 拷贝内存内容    </li>
+ <li><a href="memmove.htm"><strong>memmove();</strong></a>  拷贝内存内容   </li>
+ <li><a href="memset.htm"><strong>memset();</strong></a> 将一段内存空间填入某值    </li>
+ <li><a href="strcat.htm"><strong>strcat();</strong></a>  连接两字符串   </li>
+ <li><a href="strncat.htm"><strong>strncat();</strong></a> 连接两字符串    </li>
+ <li><a href="strchr.htm"><strong>strchr();</strong></a> 查找字符串中第一个出现的指定字符    </li>
+ <li><a href="strcmp.htm"><strong>strcmp();</strong></a>  比较字符串   </li>
+ <li><a href="strncmp.htm"><strong>strncmp();</strong></a>比较2个字符串的前N个字符     </li>
+ <li><a href="strcoll.htm"><strong>strcoll();</strong></a> 采用目前区域的字符排列比较字符串    </li>
+ <li><a href="strcpy.htm"><strong>strcpy();</strong></a>  拷贝字符串   </li>
+ <li><a href="strncpy.htm"><strong>strncpy();</strong></a> 拷贝字符串    </li>
+ <li><a href="strcspn.htm"><strong>strcspn();</strong></a> 返回字符连续不含指定字符的字符数    </li>
+ <li><a href="strerror.htm"><strong>strerror();</strong></a>   返回错误原因的描述字符串  </li>
+ <li><a href="strlen.htm"><strong>strlen();</strong></a> 计算字符串长度    </li>
+ <li><a href="strpbrk.htm"><strong>strpbrk();</strong></a>  查找字符串中第一个出现的指定字符   </li>
+ <li><a href="strrchr.htm"><strong>strrchr();</strong></a> 查找字符串中最后出现的指定字符    </li>
+ <li><a href="strspn.htm"><strong>strspn();</strong></a>返回字符串连续不含指定字符的字符数     </li>
+ <li><a href="strstr.htm"><strong>strstr();</strong></a> 在一字符串中查找指定的字符串    </li>
+ <li><a href="strtok.htm"><strong>strtok();</strong></a> 分割字符串    </li>
+ <li><a href="strxfrm.htm"><strong>strxfrm();</strong></a>  转换字符串   </li>
+
+
+</ul>
+</dt>
+
+
+
+    </dl> 
+ 
+
+
+
+   
+    <h2 class="ansi-core">&lt;time.h&gt; 时间和日期函数</h2> 
+    <dl id="ansi-anim" class="api ansi-core"> 
+         <dt>&lt;time.h&gt;  是C标准函数库中获取时间与日期、对时间与日期数据操作及格式化的头文件。</dt> 
+	
+	
+	
+
+
+	<dt>  <br/>宏：<br/>
+<ul>
+<li><strong>NULL </strong>null是一个null指针常量的值</li>
+<li><strong>CLOCKS_PER_SEC </strong>  每秒的时钟数</li>
+
+
+</ul>
+	<dt></dt><dt></dt>
+	<dt> 变量：<br/>
+	
+	<uL>
+<li><strong>typedef size_t</strong> 类型定义 </li>
+<li><strong>typedef clock_t</strong>类型定义 </li>
+<li><strong>struct tm</strong>  结构体</li>
+
+<li>
+<br/>
+struct tm {<br/>
+        <strong>int tm_sec; </strong>     /* 秒 – 取值区间为[0,59] */<br/><br/>
+        <strong>int tm_min;</strong>      /* 分 - 取值区间为[0,59] */<br/><br/>
+        <strong>int tm_hour;</strong>     /* 时 - 取值区间为[0,23] */<br/><br/>
+        <strong>int tm_mday;</strong>     /* 一个月中的日期 - 取值区间为[1,31] */<br/><br/>
+        <strong>int tm_mon; </strong>     /* 月份（从一月开始，0代表一月） - 取值区间为[0,11] */<br/><br/>
+        <strong>int tm_year;</strong>     /* 年份，其值等于实际年份减去1900 */<br/><br/>
+        <strong>int tm_wday;</strong>     /* 星期 – 取值区间为[0,6]，其中0代表星期天，1代表星期一，以此类推 */<br/><br/>
+        <strong>int tm_yday; </strong>    /* 从每年的1月1日开始的天数 – 取值区间为[0,365]，其中0代表1月1日，1代表1月2日，以此类推 */<br/><br/>
+        <strong>int tm_isdst;</strong>    /* 夏令时标识符，实行夏令时的时候，tm_isdst为正。不实行夏令时的进候，tm_isdst为0；不了解情况时，tm_isdst()为负。*/
+        <br/>};
+
+</li>
+	
+	</ul>
+
+	</dt>
+<dt></dt><dt></dt>
+<dt></dt><dt></dt>
+<dt> 函数：<br/>
+
+<uL>
+
+
+
+ <li><a href="asctime.htm"><strong>asctime();</strong></a>  将时间和日期以字符串格式表示   </li>
+ <li><a href="clock.htm"><strong>clock();</strong></a>  确定处理器时间    </li>
+ <li><a href="ctime.htm"><strong>ctime();</strong></a>  把日期和时间转换为字符串    </li>
+ <li><a href="difftime.htm"><strong>difftime();</strong></a>  计算两个时刻之间的时间差    </li>
+ <li><a href="gmtime.htm"><strong>gmtime();</strong></a>  把日期和时间转换为(GMT)时间    </li>
+ <li><a href="localtime.htm"><strong>localtime();</strong></a>取得当地目前时间和日期     </li>
+ <li><a href="mktime.htm"><strong>mktime();</strong></a>将时间结构数据转换成经过的秒数     </li>
+ <li><a href="strftime.htm "><strong>strftime(); </strong></a> 将时间格式化    </li>
+ <li><a href="time.htm"><strong>time();</strong></a> 取得目前的时间    </li>
+
+
+
+</ul>
+</dt>
+
+
+
+    </dl> 
+
+
+
+    </dl> 
+
+
+
+</div> 
+
+
+<!--
+<div class="layout"> 
+</div> 
+
+-->
+
+</div> 
+
+
+<div id="footer">&copy;2013 版权所有，如有需要可以打印，传播请注明出处。</div> 
+
+
+
+</div>
+
+
+<script type="text/javascript" src="static/jquery.min.js"></script>
+<script type="text/javascript" src="static/jquery.autocomplete.js"></script> 
+<script>
+$("#function").autocomplete({
+onItemSelect: function(item) {
+ //把选择结果转向搜索url..
+  window.location=item.value.split(" ")[1]+".htm";
+},
+sortFunction: function(a, b, filter) {
+			var f = filter.toLowerCase();
+			var fl = f.length;
+			var a1 = a.value.toLowerCase().substring(0, fl) == f ? '0' : '1';
+			var a1 = a1 + String(a.data[0]).toLowerCase();
+			var b1 = b.value.toLowerCase().substring(0, fl) == f ? '0' : '1';
+			var b1 = b1 + String(b.data[0]).toLowerCase();
+			if (a1 > b1) {
+				return 1;
+			}
+			if (a1 < b1) {
+				return -1;
+			}
+			return 0;
+		},
+maxItemsToShow: 15,
+data: [['[字符测试] isalnum',1],['[字符测试] isalpha',2],['[字符测试] iscntrl ',3],['[字符测试] isdigit ',4],['[字符测试] isgraph ',5],['[字符测试] islower ',6],['[字符测试] isupper ',7],['[字符测试] isprint',8],['[字符测试] ispunct ',9],['[字符测试] isspace ',10],['[字符测试] isxdigit ',11],['[字符测试] tolower ',12],['[字符测试] toupper ',13],['[数学函数] acos',14],['[数学函数] asin',15],['[数学函数] atan',16],['[数学函数] atan2',17],['[数学函数] ceil',18],['[数学函数] cos',19],['[数学函数] cosh',20],['[数学函数] exp',21],['[数学函数] fabs',22],['[数学函数] floor',23],['[数学函数] fmod',24],['[数学函数] frexp',25],['[数学函数] ldexp',26],['[数学函数] log',27],['[数学函数] log10',28],['[数学函数] modf',29],['[数学函数] pow',30],['[数学函数] sin',31],['[数学函数] sinh',32],['[数学函数] sqrt',33],['[数学函数] tan',34],['[数学函数] tanh',35],['[输出输入] clearerr',36],['[输出输入] fclose',37],['[输出输入] feof',38],['[输出输入] ferror',39],['[输出输入] fflush',40],['[输出输入] fgetpos',41],['[输出输入] fopen',42],['[输出输入] fread',43],['[输出输入] freopen',44],['[输出输入] fseek',45],['[输出输入] fsetpos',46],['[输出输入] ftell',47],['[输出输入] fwrite',48],['[输出输入] remove',49],['[输出输入] rename',50],['[输出输入] rewind',51],['[输出输入] setbuf',52],['[输出输入] setvbuf',53],['[输出输入] tmpfile',54],['[输出输入] tmpnam',55],['[输出输入] fprintf',56],['[输出输入] fscanf',57],['[输出输入] printf',58],['[输出输入] scanf',59],['[输出输入] sprintf',60],['[输出输入] sscanf',61],['[输出输入] vfprintf',62],['[输出输入] vprintf',63],['[输出输入] vsprintf',64],['[输出输入] fgetc',65],['[输出输入] fgets',66],['[输出输入] fputc',67],['[输出输入] fputs',68],['[输出输入] getc',69],['[输出输入] getchar',70],['[输出输入] gets',71],['[输出输入] putc',72],['[输出输入] putchar',73],['[输出输入] puts',74],['[输出输入] ungetc ',75],['[输出输入] perror ',76],['[实用功能] abort',77],['[实用功能] abs',78],['[实用功能] atexit',79],['[实用功能] atof',80],['[实用功能] atoi',81],['[实用功能] atol',82],['[实用功能] bsearch',83],['[实用功能] calloc',84],['[实用功能] div',85],['[实用功能] exit',86],['[实用功能] free',87],['[实用功能] getenv',88],['[实用功能] labs',89],['[实用功能] ldiv',90],['[实用功能] malloc',91],['[实用功能] mblen',92],['[实用功能] mbstowcs',93],['[实用功能] mbtowc',94],['[实用功能] qsort',95],['[实用功能] rand',96],['[实用功能] realloc',97],['[实用功能] srand',98],['[实用功能] strtod',99],['[实用功能] strtol',100],['[实用功能] strtoul',101],['[实用功能] system',102],['[实用功能] wcstombs',103],['[实用功能] wctomb',104],['[字符操作] memchr',105],['[字符操作] memcmp',106],['[字符操作] memcpy',107],['[字符操作] memmove',108],['[字符操作] memset',109],['[字符操作] strcat',110],['[字符操作] strncat',111],['[字符操作] strchr',112],['[字符操作] strcmp',113],['[字符操作] strncmp',114],['[字符操作] strcoll',115],['[字符操作] strcpy',116],['[字符操作] strncpy',117],['[字符操作] strcspn',118],['[字符操作] strerror',119],['[字符操作] strlen',120],['[字符操作] strpbrk',121],['[字符操作] strrchr',122],['[字符操作] strspn',123],['[字符操作] strstr',124],['[字符操作] strtok',125],['[字符操作] strxfrm',126],['[日期时间] asctime',127],['[日期时间] clock',128],['[日期时间] ctime',129],['[日期时间] difftime',130],['[日期时间] gmtime',131],['[日期时间] localtime',132],['[日期时间] mktime',133],['[日期时间] strftime ',134],['[日期时间] time',135]]
+});
+</script>
+
+</body> 
+</html> 
+ 
